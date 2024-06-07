@@ -35,9 +35,10 @@ export class WeatherWidget extends LitElement {
         .container {
             display: flex;
             justify-content: space-between;
-            width: 50%;
+            align-items: center;
             flex-direction: column;
             padding: 16px;
+            width: 50%;
             border: 1px solid #ccc;
             border-radius: 8px;
             background: linear-gradient(135deg, #31255a, #2b235a);
@@ -48,6 +49,10 @@ export class WeatherWidget extends LitElement {
             display: flex;
             justify-content: space-between;
             flex-direction: column;
+            width: 75%;
+        }
+        .label {
+            font-weight: bold;
         }
     `;
     @property()
@@ -80,6 +85,13 @@ export class WeatherWidget extends LitElement {
                 ? html` 
                     <div class="centrer">
                         <div class="container">
+                            <p class="label">
+                                Currently:
+                            </p>
+                            <div class="hour-container">
+                                <weather-hour-entry temperature=${this._currentInfo.temp} time=${this._currentInfo.time}
+                                                    windSpeed=${this._currentInfo.windSpeed} rainProbability=${this._currentInfo.precipitation}></weather-hour-entry>
+                            </div>
                             <weather-day minTemp=${todayDailyData[0].minTemp} maxTemp=${todayDailyData[0].maxTemp}></weather-day>
                             <div class="hour-container">
                             ${todayHourlyData.map((data) => html`

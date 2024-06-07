@@ -35,11 +35,11 @@ export class WeatherHourEntry extends LitElement {
         return html`
             <div class="weather-widget">
                 <div class="detail">
-                    <span class="label">Min Temperature: </span>
+                    <span class="label">Today's Minimum Temperature: </span>
                     <span>${Math.floor(this.minTemp!)}°C</span>
                 </div>
                 <div class="detail">
-                    <span class="label">Max Temperature: </span>
+                    <span class="label">Today's Maximum Temperature: </span>
                     <span>${Math.floor(this.maxTemp!)}°C</span>
                 </div>
             </div>

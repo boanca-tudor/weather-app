@@ -20,6 +20,7 @@ The WeatherWidget is a custom web component built using the Lit library. It fetc
 - **_hourlyInfo:** Array holding hourly weather data.
 - **_dailyInfo:** Array holding daily weather data.
 - **_currentInfo:** Object holding current weather information.
+- **_timeZone:** String holding the time zone for the given geographic coordinates.
 
 ## Usage
 

@@ -46,6 +46,9 @@ export class WeatherHourEntry extends LitElement {
     @property()
     rainProbability: number | undefined;
 
+    @property()
+    timeZone: string | undefined;
+
     override render() {
         return html`
             <div class="weather-widget">
@@ -61,7 +64,7 @@ export class WeatherHourEntry extends LitElement {
                   <line x1="15" y1="85" x2="30" y2="70" stroke="orange" stroke-width="2"/>
                   <line x1="70" y1="30" x2="85" y2="15" stroke="orange" stroke-width="2"/>
                 </svg>
-                <div class="time">${this.time ? `${new Date(this.time).toLocaleTimeString()}`: ''}</div>
+                <div class="time">${this.time ? `${new Date(this.time).toLocaleTimeString('en-US', { timeZone: this.timeZone, timeZoneName: 'long'})}`: ''}</div>
                 <div class="temperature">${Math.floor(this.temperature!)}°C</div>
                 <div class="details">
                     <div class="detail">

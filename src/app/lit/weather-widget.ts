@@ -57,6 +57,8 @@ export class WeatherWidget extends LitElement {
     `;
     @property()
     lat: number | undefined;
+
+    @property()
     long: number | undefined;
 
     constructor() {
@@ -75,10 +77,13 @@ export class WeatherWidget extends LitElement {
     @state()
     private _currentInfo : CurrentInfo = {} as CurrentInfo;
 
+    @state()
+    private _timeZone: string = "";
+
     override render() {
         let todayHourlyData = this._hourlyInfo.filter((hourlyData: HourlyData) => hourlyData.time?.getDate() === this._currentInfo.time?.getDate());
         let todayDailyData = this._dailyInfo.filter((dailyData: DailyData) => dailyData.time?.getDate() === this._currentInfo.time?.getDate());
-        console.log(todayHourlyData);
+        console.log(this._timeZone);
         return html`
             <button @click=${this.getWeatherData}>Get Weather Forecast</button>
             ${this._weatherInfoAvailable 
@@ -90,7 +95,9 @@ export class WeatherWidget extends LitElement {
                             </p>
                             <div class="hour-container">
                                 <weather-hour-entry temperature=${this._currentInfo.temp} time=${this._currentInfo.time}
-                                                    windSpeed=${this._currentInfo.windSpeed} rainProbability=${this._currentInfo.precipitation}></weather-hour-entry>
+                                                    windSpeed=${this._currentInfo.windSpeed} rainProbability=${this._currentInfo.precipitation}
+                                                    timeZone=${this._timeZone}>
+                                                    </weather-hour-entry>
                             </div>
                             <weather-day minTemp=${todayDailyData[0].minTemp} maxTemp=${todayDailyData[0].maxTemp}></weather-day>
                             <div class="hour-container">
@@ -182,5 +189,6 @@ export class WeatherWidget extends LitElement {
             time: new Date()
         }
         this._weatherInfoAvailable = true;
+        this._timeZone = response.timezone()!;
     }
 }

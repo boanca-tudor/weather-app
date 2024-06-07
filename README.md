@@ -1,27 +1,30 @@
-# WeatherApp
+# Lit Weather Widget
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.1.
+The WeatherWidget is a custom web component built using the Lit library. It fetches and displays weather data including current, hourly, and daily forecasts. The component relies on the OpenMeteo API to retrieve weather information based on latitude and longitude.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Fetch Weather Data:** Retrieves current, hourly, and daily weather data based on provided latitude and longitude.
+- **Displays weather information:** Displays the weather info for the current day, including minimum and maximum temperatures, and hourly forecasts.
+- **Dynamic Rendering:** Renders weather data dynamically based on the fetched information, using Lit's reactive properties and state management to update the UI.
+- **Modular Components:** Integrates other custom Lit components for displaying hourly and daily weather data, respectively.
 
-## Code scaffolding
+## Properties
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **lat:** Latitude of the location for which weather data is to be fetched *(type: number)*.
+- **long:** Longitude of the location for which weather data is to be fetched *(type: number)*.
 
-## Build
+## States
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **_weatherInfoAvailable:** Indicates whether weather information is available.
+- **_hourlyInfo:** Array holding hourly weather data.
+- **_dailyInfo:** Array holding daily weather data.
+- **_currentInfo:** Object holding current weather information.
 
-## Running unit tests
+## Usage
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Import the `weather-widget` component.
+2. Place the `<weather-widget>` tag in your HTML file giving it the lat and long parameters.
+3. To display/update the widget, click the 'Get weather Forecast' button.
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+ 
